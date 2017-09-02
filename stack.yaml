@@ -1,0 +1,19 @@
+resolver: lts-8.5
+
+packages:
+- .
+- location:
+    git: git@github.com:purescript/purescript.git
+    commit: f124db12c9dbd3bb8fba04e17ae9fbab4288a26c
+  extra-dep: true
+
+# Dependency packages to be pulled from upstream that are not in the resolver
+# (e.g., acme-missiles-0.3)
+extra-deps:
+- pipes-http-1.0.5
+
+# Override default flag values for local packages and extra-deps
+flags: {}
+
+# Extra package databases containing global packages
+extra-package-dbs: []

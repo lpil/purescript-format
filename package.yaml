@@ -1,0 +1,41 @@
+name: purescript-format
+version: 0.1.0
+
+author: Louis Pilfold
+maintainer: Louis Pilfold <louis@lpil.uk>
+copyright: 2017 - Present Louis Pilfold
+license: MPL-2.0
+github: lpil/purescript-format
+
+extra-source-files:
+- README.md
+
+dependencies:
+- purescript
+- protolude
+- text
+- base
+
+default-extensions:
+- OverloadedStrings
+- NoImplicitPrelude
+
+library:
+  source-dirs:
+  - src
+
+executables:
+  purs-format:
+    main: Main.hs
+    source-dirs: app
+    dependencies:
+    - purescript-format
+
+tests:
+  test:
+    main: Spec.hs
+    source-dirs: test
+    dependencies:
+    - purescript-format
+    - hspec
+    - QuickCheck
