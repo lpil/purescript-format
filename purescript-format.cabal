@@ -1,0 +1,265 @@
+-- This file has been generated from package.yaml by hpack version 0.17.1.
+--
+-- see: https://github.com/sol/hpack
+
+name:                purescript-format
+version:             0.1.0
+homepage:            https://github.com/lpil/purescript-format#readme
+bug-reports:         https://github.com/lpil/purescript-format/issues
+license:             MPL-2.0
+license-file:        LICENSE
+author:              Louis Pilfold
+maintainer:          Louis Pilfold <louis@lpil.uk>
+copyright:           2017 - Present Louis Pilfold
+build-type:          Simple
+cabal-version:       >= 1.10
+
+extra-source-files:
+    app/static/index.html
+    app/static/index.js
+    app/static/normalize.css
+    app/static/pursuit.css
+    app/static/pursuit.less
+    README.md
+
+source-repository head
+  type: git
+  location: https://github.com/lpil/purescript-format
+
+library
+  hs-source-dirs:
+      src
+      vendor/purescript-compiler
+  default-extensions: ConstraintKinds DataKinds DeriveFunctor EmptyDataDecls FlexibleContexts KindSignatures LambdaCase MultiParamTypeClasses NoImplicitPrelude PatternGuards PatternSynonyms RankNTypes RecordWildCards OverloadedStrings ScopedTypeVariables TupleSections ViewPatterns
+  build-depends:
+      base
+    , aeson >=1.0 && <1.2
+    , aeson-better-errors >=0.8
+    , ansi-terminal >=0.6.2 && <0.7
+    , base >=4.8 && <5
+    , base-compat >=0.6.0
+    , blaze-html >=0.8.1 && <0.10
+    , bower-json >=1.0.0.1 && <1.1
+    , boxes >=0.1.4 && <0.2.0
+    , bytestring
+    , cheapskate >=0.1 && <0.2
+    , clock
+    , containers
+    , data-ordlist >=0.4.7.0
+    , deepseq
+    , directory >=1.2.3
+    , dlist
+    , edit-distance
+    , file-embed
+    , filepath
+    , fsnotify >=0.2.1
+    , Glob >=0.7 && <0.9
+    , haskeline >=0.7.0.0
+    , http-client >=0.4.30 && <0.6.0
+    , http-types
+    , language-javascript >=0.6.0.9 && <0.7
+    , lens ==4.*
+    , lifted-base >=0.2.3 && <0.2.4
+    , monad-control >=1.0.0.0 && <1.1
+    , monad-logger >=0.3 && <0.4
+    , mtl >=2.1.0 && <2.3.0
+    , parallel >=3.2 && <3.3
+    , parsec >=3.1.10
+    , pattern-arrows >=0.0.2 && <0.1
+    , pipes >=4.0.0 && <4.4.0
+    , pipes-http
+    , process >=1.2.0 && <1.5
+    , protolude >=0.1.6
+    , regex-tdfa
+    , safe >=0.3.9 && <0.4
+    , scientific >=0.3.4.9 && <0.4
+    , semigroups >=0.16.2 && <0.19
+    , sourcemap >=0.1.6
+    , spdx ==0.2.*
+    , split
+    , stm >=0.2.4.0
+    , stringsearch
+    , syb
+    , text
+    , time
+    , transformers >=0.3.0 && <0.6
+    , transformers-base >=0.4.0 && <0.5
+    , transformers-compat >=0.3.0
+    , unordered-containers
+    , utf8-string >=1 && <2
+    , vector
+  exposed-modules:
+      Data.String.Strip
+      Lib
+      Control.Monad.Logger
+      Control.Monad.Supply
+      Control.Monad.Supply.Class
+      Language.PureScript
+      Language.PureScript.AST
+      Language.PureScript.AST.Binders
+      Language.PureScript.AST.Declarations
+      Language.PureScript.AST.Exported
+      Language.PureScript.AST.Literals
+      Language.PureScript.AST.Operators
+      Language.PureScript.AST.SourcePos
+      Language.PureScript.AST.Traversals
+      Language.PureScript.Bundle
+      Language.PureScript.CodeGen
+      Language.PureScript.CodeGen.JS
+      Language.PureScript.CodeGen.JS.Common
+      Language.PureScript.CodeGen.JS.Printer
+      Language.PureScript.Comments
+      Language.PureScript.Constants
+      Language.PureScript.CoreFn
+      Language.PureScript.CoreFn.Ann
+      Language.PureScript.CoreFn.Binders
+      Language.PureScript.CoreFn.Desugar
+      Language.PureScript.CoreFn.Expr
+      Language.PureScript.CoreFn.Meta
+      Language.PureScript.CoreFn.Module
+      Language.PureScript.CoreFn.ToJSON
+      Language.PureScript.CoreFn.Traversals
+      Language.PureScript.CoreImp
+      Language.PureScript.CoreImp.AST
+      Language.PureScript.CoreImp.Optimizer
+      Language.PureScript.CoreImp.Optimizer.Blocks
+      Language.PureScript.CoreImp.Optimizer.Common
+      Language.PureScript.CoreImp.Optimizer.Inliner
+      Language.PureScript.CoreImp.Optimizer.MagicDo
+      Language.PureScript.CoreImp.Optimizer.TCO
+      Language.PureScript.CoreImp.Optimizer.Unused
+      Language.PureScript.Crash
+      Language.PureScript.Docs
+      Language.PureScript.Docs.AsHtml
+      Language.PureScript.Docs.AsMarkdown
+      Language.PureScript.Docs.Convert
+      Language.PureScript.Docs.Convert.ReExports
+      Language.PureScript.Docs.Convert.Single
+      Language.PureScript.Docs.Css
+      Language.PureScript.Docs.ParseInPackage
+      Language.PureScript.Docs.Prim
+      Language.PureScript.Docs.Render
+      Language.PureScript.Docs.RenderedCode
+      Language.PureScript.Docs.RenderedCode.RenderKind
+      Language.PureScript.Docs.RenderedCode.RenderType
+      Language.PureScript.Docs.RenderedCode.Types
+      Language.PureScript.Docs.Types
+      Language.PureScript.Docs.Utils.MonoidExtras
+      Language.PureScript.Environment
+      Language.PureScript.Errors
+      Language.PureScript.Errors.JSON
+      Language.PureScript.Externs
+      Language.PureScript.Hierarchy
+      Language.PureScript.Ide
+      Language.PureScript.Ide.CaseSplit
+      Language.PureScript.Ide.Command
+      Language.PureScript.Ide.Completion
+      Language.PureScript.Ide.Error
+      Language.PureScript.Ide.Externs
+      Language.PureScript.Ide.Filter
+      Language.PureScript.Ide.Filter.Declaration
+      Language.PureScript.Ide.Imports
+      Language.PureScript.Ide.Logging
+      Language.PureScript.Ide.Matcher
+      Language.PureScript.Ide.Prim
+      Language.PureScript.Ide.Pursuit
+      Language.PureScript.Ide.Rebuild
+      Language.PureScript.Ide.Reexports
+      Language.PureScript.Ide.SourceFile
+      Language.PureScript.Ide.State
+      Language.PureScript.Ide.Types
+      Language.PureScript.Ide.Util
+      Language.PureScript.Ide.Watcher
+      Language.PureScript.Interactive
+      Language.PureScript.Interactive.Completion
+      Language.PureScript.Interactive.Directive
+      Language.PureScript.Interactive.IO
+      Language.PureScript.Interactive.Message
+      Language.PureScript.Interactive.Module
+      Language.PureScript.Interactive.Parser
+      Language.PureScript.Interactive.Printer
+      Language.PureScript.Interactive.Types
+      Language.PureScript.Kinds
+      Language.PureScript.Label
+      Language.PureScript.Linter
+      Language.PureScript.Linter.Exhaustive
+      Language.PureScript.Linter.Imports
+      Language.PureScript.Make
+      Language.PureScript.ModuleDependencies
+      Language.PureScript.Names
+      Language.PureScript.Options
+      Language.PureScript.Parser
+      Language.PureScript.Parser.Common
+      Language.PureScript.Parser.Declarations
+      Language.PureScript.Parser.Kinds
+      Language.PureScript.Parser.Lexer
+      Language.PureScript.Parser.State
+      Language.PureScript.Parser.Types
+      Language.PureScript.Pretty
+      Language.PureScript.Pretty.Common
+      Language.PureScript.Pretty.Kinds
+      Language.PureScript.Pretty.Types
+      Language.PureScript.Pretty.Values
+      Language.PureScript.PSString
+      Language.PureScript.Publish
+      Language.PureScript.Publish.BoxesHelpers
+      Language.PureScript.Publish.ErrorsWarnings
+      Language.PureScript.Publish.Utils
+      Language.PureScript.Renamer
+      Language.PureScript.Sugar
+      Language.PureScript.Sugar.BindingGroups
+      Language.PureScript.Sugar.CaseDeclarations
+      Language.PureScript.Sugar.DoNotation
+      Language.PureScript.Sugar.LetPattern
+      Language.PureScript.Sugar.Names
+      Language.PureScript.Sugar.Names.Common
+      Language.PureScript.Sugar.Names.Env
+      Language.PureScript.Sugar.Names.Exports
+      Language.PureScript.Sugar.Names.Imports
+      Language.PureScript.Sugar.ObjectWildcards
+      Language.PureScript.Sugar.Operators
+      Language.PureScript.Sugar.Operators.Binders
+      Language.PureScript.Sugar.Operators.Common
+      Language.PureScript.Sugar.Operators.Expr
+      Language.PureScript.Sugar.Operators.Types
+      Language.PureScript.Sugar.TypeClasses
+      Language.PureScript.Sugar.TypeClasses.Deriving
+      Language.PureScript.Sugar.TypeDeclarations
+      Language.PureScript.Traversals
+      Language.PureScript.TypeChecker
+      Language.PureScript.TypeChecker.Entailment
+      Language.PureScript.TypeChecker.Kinds
+      Language.PureScript.TypeChecker.Monad
+      Language.PureScript.TypeChecker.Skolems
+      Language.PureScript.TypeChecker.Subsumption
+      Language.PureScript.TypeChecker.Synonyms
+      Language.PureScript.TypeChecker.Types
+      Language.PureScript.TypeChecker.TypeSearch
+      Language.PureScript.TypeChecker.Unify
+      Language.PureScript.TypeClassDictionaries
+      Language.PureScript.Types
+      System.IO.UTF8
+  default-language: Haskell2010
+
+executable purs-format
+  main-is: Main.hs
+  hs-source-dirs:
+      app
+  build-depends:
+      base
+    , purescript-format
+  default-language: Haskell2010
+
+test-suite test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  hs-source-dirs:
+      test
+  build-depends:
+      base
+    , purescript-format
+    , hspec
+    , QuickCheck
+  other-modules:
+      Data.String.StripSpec
+  default-language: Haskell2010

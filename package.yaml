@@ -1,0 +1,113 @@
+name: purescript-format
+version: 0.1.0
+
+author: Louis Pilfold
+maintainer: Louis Pilfold <louis@lpil.uk>
+copyright: 2017 - Present Louis Pilfold
+license: MPL-2.0
+github: lpil/purescript-format
+
+extra-source-files:
+- README.md
+- app/static/*
+
+dependencies:
+- base
+
+library:
+  source-dirs:
+  - src
+  - vendor/purescript-compiler
+  dependencies:
+  - aeson >=1.0 && <1.2
+  - aeson-better-errors >=0.8
+  - ansi-terminal >=0.6.2 && <0.7
+  - base >=4.8 && <5
+  - base-compat >=0.6.0
+  - blaze-html >=0.8.1 && <0.10
+  - bower-json >=1.0.0.1 && <1.1
+  - boxes >=0.1.4 && <0.2.0
+  - bytestring
+  - cheapskate >=0.1 && <0.2
+  - clock
+  - containers
+  - data-ordlist >=0.4.7.0
+  - deepseq
+  - directory >=1.2.3
+  - dlist
+  - edit-distance
+  - file-embed
+  - filepath
+  - fsnotify >=0.2.1
+  - Glob >=0.7 && <0.9
+  - haskeline >=0.7.0.0
+  - http-client >=0.4.30 && <0.6.0
+  - http-types
+  - language-javascript >=0.6.0.9 && <0.7
+  - lens ==4.*
+  - lifted-base >=0.2.3 && <0.2.4
+  - monad-control >=1.0.0.0 && <1.1
+  - monad-logger >=0.3 && <0.4
+  - mtl >=2.1.0 && <2.3.0
+  - parallel >=3.2 && <3.3
+  - parsec >=3.1.10
+  - pattern-arrows >=0.0.2 && <0.1
+  - pipes >=4.0.0 && <4.4.0
+  - pipes-http
+  - process >=1.2.0 && <1.5
+  - protolude >=0.1.6
+  - regex-tdfa
+  - safe >=0.3.9 && <0.4
+  - scientific >=0.3.4.9 && <0.4
+  - semigroups >=0.16.2 && <0.19
+  - sourcemap >=0.1.6
+  - spdx ==0.2.*
+  - split
+  - stm >=0.2.4.0
+  - stringsearch
+  - syb
+  - text
+  - time
+  - transformers >=0.3.0 && <0.6
+  - transformers-base >=0.4.0 && <0.5
+  - transformers-compat >=0.3.0
+  - unordered-containers
+  - utf8-string >=1 && <2
+  - vector
+
+  default-extensions:
+  - ConstraintKinds
+  - DataKinds
+  - DeriveFunctor
+  - EmptyDataDecls
+  - FlexibleContexts
+  - KindSignatures
+  - LambdaCase
+  - MultiParamTypeClasses
+  - NoImplicitPrelude
+  - PatternGuards
+  - PatternSynonyms
+  - RankNTypes
+  - RecordWildCards
+  - OverloadedStrings
+  - ScopedTypeVariables
+  - TupleSections
+  - ViewPatterns
+
+
+executables:
+  purs-format:
+    main: Main.hs
+    source-dirs: app
+    dependencies:
+    - purescript-format
+
+
+tests:
+  test:
+    main: Spec.hs
+    source-dirs: test
+    dependencies:
+    - purescript-format
+    - hspec
+    - QuickCheck

@@ -1,0 +1,11 @@
+error: The following required arguments were not provided:
+    <pattern>
+
+USAGE:
+    
+    rg [OPTIONS] <pattern> [<path> ...]
+    rg [OPTIONS] [-e PATTERN | -f FILE ]... [<path> ...]
+    rg [OPTIONS] --files [<path> ...]
+    rg [OPTIONS] --type-list
+
+For more information try --help

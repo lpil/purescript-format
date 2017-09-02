@@ -1,0 +1,7 @@
+flags: {}
+extra-package-dbs: []
+packages:
+- .
+extra-deps:
+- pipes-http-1.0.5
+resolver: lts-9.2
