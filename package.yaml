@@ -11,14 +11,16 @@ extra-source-files:
 - README.md
 
 dependencies:
-- purescript
-- protolude
-- text
 - base
+- here
+- protolude
+- purescript
+- text
 
 default-extensions:
-- OverloadedStrings
 - NoImplicitPrelude
+- OverloadedStrings
+- QuasiQuotes
 
 library:
   source-dirs:
