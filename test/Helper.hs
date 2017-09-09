@@ -7,4 +7,4 @@ import Test.Hspec (Expectation, shouldBe)
 assertFormat :: Text -> Expectation
 assertFormat source =
   let formatted = Format.format 40 source
-  in formatted `shouldBe` source
+  in formatted `shouldBe` Right source

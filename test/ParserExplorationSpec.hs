@@ -56,4 +56,4 @@ main = log "Hello, World!"
       comments `shouldBe` []
       -- modName `shouldBe` undefined
       -- declarations `shouldBe` undefined -- We don't have Eq here
-      declarRefs `shouldBe` []
+      declarRefs `shouldBe` Nothing
