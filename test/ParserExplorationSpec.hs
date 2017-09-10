@@ -50,8 +50,8 @@ main = log "Hello, World!"
         , "\"Hello, World!\""
         ]
     it "parses" $ do
-      let (Right mod) = parse source
-      let (PS.Module srcSpan comments modName declarations declarRefs) = mod
+      let (Right module') = parse source
+      let (PS.Module srcSpan comments modName declarations declarRefs) = module'
       -- srcSpan `shouldBe` undefined
       comments `shouldBe` []
       -- modName `shouldBe` undefined
