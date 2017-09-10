@@ -1,5 +1,8 @@
 module Language.PureScript.Format
   ( format
+  , formatWith
+  , defaultOptions
+  , Options(..)
   ) where
 
 -- TODO: Define formatWith or formatWithFile so more info can be specified.
@@ -9,6 +12,11 @@ import Protolude
 import qualified Text.Parsec as Parsec
 import Text.PrettyPrint.Leijen.Text as PrettyPrint
 
+data Options = Options
+  { maxWidth :: Int
+  , filename :: FilePath
+  }
+
 {- Hey, take this. It will come in handy.
    https://hackage.haskell.org/package/ansi-wl-pprint-0.6.8.1/docs/Text-PrettyPrint-ANSI-Leijen.html
 -}
@@ -17,12 +25,24 @@ import Text.PrettyPrint.Leijen.Text as PrettyPrint
 (|>) :: a -> (a -> c) -> c
 (|>) = flip ($)
 
+{-| Some sensible defaults for formatting PureScript code.
+-}
+defaultOptions :: Options
+defaultOptions = Options {maxWidth = 80, filename = "nofile"}
+
 {-| Pretty print PureScript source code.
 -}
-format :: Int -> Text -> Either Parsec.ParseError Text
-format maxWidth source = do
-  module' <- parse source
-  Module module' |> pretty |> renderPretty 0.9 maxWidth |> displayTStrict |>
+format :: Text -> Either Parsec.ParseError Text
+format = do
+  formatWith defaultOptions
+
+{-| Pretty print PureScript source code using the options provided.
+-}
+formatWith :: Options -> Text -> Either Parsec.ParseError Text
+formatWith options source = do
+  module' <- parse (filename options) source
+  Module module' |> pretty |> renderPretty 0.9 (maxWidth options) |>
+    displayTStrict |>
     pure
 
 {- Wrappers for PureScript types so we can define the Pretty class
@@ -46,8 +66,9 @@ instance Pretty ModuleName where
 
 {-| Parse a module of PureScript source code.
 -}
-parse :: Text -> Either Parsec.ParseError PureScript.Module
-parse source = tokenize source >>= parseTokens
+parse :: FilePath -> Text -> Either Parsec.ParseError PureScript.Module
+parse path source = tokenize path source >>= parseTokens path
   where
-    tokenize = PureScript.lex "nofile"
-    parseTokens = PureScript.runTokenParser "nofile" PureScript.parseModule
+    tokenize filepath = PureScript.lex filepath
+    parseTokens filepath =
+      PureScript.runTokenParser filepath PureScript.parseModule
