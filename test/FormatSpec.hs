@@ -28,3 +28,26 @@ module Main where
 import Data.Text
 import Data.Char
 |]
+    it "formats imports that specify functions" $ do
+      assertFormat
+        [here|
+module Main where
+
+import Data.Char (ok, ko)
+|]
+      assertFormat
+        [here|
+module Main where
+
+import Control.Monad.Eff.Console
+       (log, vlog)
+|]
+      assertFormat
+        [here|
+module Main where
+
+import Control.Monad.Eff.Console
+       (one, two, three, four, five,
+        six, seven, eight, nine, ten,
+        eleven, twelve)
+|]

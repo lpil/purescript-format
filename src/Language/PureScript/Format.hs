@@ -7,7 +7,7 @@ module Language.PureScript.Format
 
 import Control.Category ((>>>))
 import qualified Language.PureScript as PS
-import Protolude
+import Protolude hiding (group)
 import qualified Text.Parsec as Parsec
 
 -- https://hackage.haskell.org/package/wl-pprint-text-1.1.1.0/docs/Text-PrettyPrint-Leijen-Text.html
@@ -67,7 +67,7 @@ prettyDeclarations declarations =
 
 {-| A top level declaration, such as an import or a function definition.
 
-    purescript/src/Language/PureScript/AST/Declarations.hs
+purescript/src/Language/PureScript/AST/Declarations.hs
 -}
 prettyDeclaration :: PS.Declaration -> Doc
 prettyDeclaration (PS.ImportDeclaration _ name type' qualifier) =
@@ -91,7 +91,17 @@ prettyImport :: PS.ModuleName
              -> Maybe PS.ModuleName
              -> Doc
 prettyImport name PS.Implicit Nothing = "import " <> prettyModuleName name
+prettyImport name (PS.Explicit defRefs) Nothing =
+  let header = prettyImport name PS.Implicit Nothing
+      refsDocs =
+        map prettyDeclarationRef defRefs |> intersperse ("," <> softline)
+      refsDoc = refsDocs |> mconcat |> nest 1 |> parens
+  in (header </> refsDoc) |> nest 7 |> group
 prettyImport _ _ _ = undefined
+
+prettyDeclarationRef :: PS.DeclarationRef -> Doc
+prettyDeclarationRef (PS.ValueRef _ (PS.Ident ident)) = text (fromStrict ident)
+prettyDeclarationRef _ = undefined
 
 {-| Parse a module of PS source code.
 -}
