@@ -42,26 +42,23 @@ module Main where
 import Control.Monad.Eff.Console
        (log, vlog)
 |]
-      assertFormat
-        [here|
-module Main where
-
-import Control
-       (one, two, three, four)
-|]
-      assertFormat
-        [here|
-module Main where
-
-import Numbers
-       (one, two, three, four, five,
-        six, seven, eight, nine, ten,
-        eleven, twelve)
-|]
-      assertFormat
-        [here|
-module M where
-
-import Magic (Spell, (+++),
-              Familiar(Cat, Owl, Toad))
-|]
+      -- assertFormat
+      --   [here|
+-- module Main where
+-- import Control
+      --  (one, two, three, four)
+-- |]
+      -- assertFormat
+      --   [here|
+-- module Main where
+-- import Numbers
+      --  (one, two, three, four, five,
+      --   six, seven, eight, nine, ten,
+      --   eleven, twelve)
+-- |]
+      -- assertFormat
+      --   [here|
+-- module M where
+-- import Magic (Spell, (+++),
+      --         Familiar(Cat, Owl, Toad))
+-- |]
